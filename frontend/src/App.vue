@@ -1,25 +1,38 @@
 <template>
-  <contenu></contenu>
-  <header-top></header-top>
+  <div id="app">
+    <header-top></header-top>
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
-
-import Contenu from './components/contenu.vue'
-import Header from './components/header.vue'
+import header from './components/header.vue'
 
 export default {
   name: 'App',
-  components: {
-      'contenu': Contenu,
-      'header-top': Header 
+  data: function(){
+    return {
+      toggle1: true,
+      toggle2: false,
     }
+  },
+  methods: {
+         
+  },
+  components: {
+    'header-top': header,
   }
-
+}
 </script>
 
-<style lang="scss">
+<style>
 #app {
-
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
 }
+
 </style>
