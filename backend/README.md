@@ -1,8 +1,12 @@
-#Installation:
+# backend
+
+## Project setup
+```
 npm install
+```
 
-
-#Lancement:
+### Compiles and hot-reloads for development
+```
 node server
 ou 
 nodemon server
