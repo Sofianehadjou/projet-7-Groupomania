@@ -20,6 +20,7 @@ module.exports = {
      //params
         var title = req.body.title;
         var content = req.body.content;
+        var attachment = req.body.attachment;
 
         if (title == null || content == null){
             return res.status(400).json({'error': 'missing parameters'});
@@ -46,6 +47,7 @@ module.exports = {
                 models.Publication.create({
                   title  : title,
                   content: content,
+                  attachment: attachment,
                   likes  : 0,
                   UserId : userFound.id
                 })
@@ -83,6 +85,7 @@ module.exports = {
             offset: (!isNaN(offset)) ? offset : null,
             include: [{
                 model: models.User,
+                as: 'User',
                 attributes: [ 'username' ]
             }]
         })

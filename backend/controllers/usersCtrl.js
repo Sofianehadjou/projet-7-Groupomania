@@ -157,4 +157,15 @@ module.exports = {
             res.status(500).json({ 'error': 'cannot update user ' });
         })
     },
+    deleteUserProfile: (req, res) => {
+        var headerAuth = req.headers['authorization'];
+        var userId = jwtUtils.getUserId(headerAuth);  
+
+        models.Like
+            .destroy({ where: { UserId: userId } })
+            .then(() => models.Publication.destroy({ where: { userId: userId } }))
+            .then(() => models.User.destroy({where: {id: userId}}))
+            .then(() => res.status(204).json())
+            .catch(error => res.status(400).json({ error }));
+    }
 };

@@ -13,6 +13,8 @@ exports.router = (function() {
   apiRouter.route('/users/login/').post(usersCtrl.login);
   apiRouter.route('/users/profil/').get(usersCtrl.getUserProfile);
   apiRouter.route('/users/profil/').put(usersCtrl.updateUserProfile);
+  apiRouter.route('/users/profil/').delete(usersCtrl.deleteUserProfile);
+  
 
   //Publications routes.
   apiRouter.route('/publications/new/').post(publicationsCtrl.createPublication);
