@@ -28,7 +28,11 @@
                         <input type="email" placeholder="Email *" class="form-control" v-model="email" required/>
                         <input type="password" placeholder="Mot de passe *" class="form-control" v-model="password" required/>
                         <input type="text" placeholder="Bio" class="form-control" v-model="bio"/>
-                        <button class="btn btn-primary " type="submit" >S'inscrire</button>
+                        <button class="btn btn-primary btn-inscription2" type="submit" >S'inscrire</button>
+                        <hr>
+                        <div>
+                            <button class="btn btn-lg btn-primary btn-connexion" type="submit" v-on:click="toggleOng1">vous avez déjà un compte !</button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -53,6 +57,7 @@ export default {
     name: 'connection',
     data(){
         return {
+            auth:'',
             toggle1: true,
             toggle2: false,
             username:'',
@@ -82,17 +87,20 @@ export default {
                     this.password = ''
                     router.push({ name: 'profil' })
                     //console.log(res.data);
-                    this.$router.push('/home');
-
+                    if(res){
+                        this.emitMethod()
+                        this.$router.push('/home');
+                    }
                 }
             })
             .catch(err => {
                 console.log(err)
             })
-            this.emitMethod()
         },
         emitMethod() {
-             EventBus.$emit('logged-in', 'loggedin')
+            if(localStorage.getItem("api-token")){
+                EventBus.$emit('logged-in', 'loggedin')
+            }
         },
          logout() {
             localStorage.removeItem('user');
@@ -167,9 +175,12 @@ export default {
     .btn-inscription{
         background-color: #fd2d01;
         border: 1px solid #fd2d01!important;
-        width: 65%;
-
-        
+        width: 65%; 
+    }
+    .btn-inscription2{
+        width: 50%;
+        background-color: #fd2d01;
+        border: 1px solid #fd2d01!important;
     }
 
 </style>

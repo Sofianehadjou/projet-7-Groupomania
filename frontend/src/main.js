@@ -16,5 +16,8 @@ const router = new VueRouter({
 })
 new Vue({
   render: h => h(App),
-  router: router
+  router: router,
+  created: function(){
+    document.title = 'Groupomania| Réseau social interne.'
+  }
 }).$mount('#app')

@@ -40,9 +40,9 @@ export default {
         }
     },
     mounted() {
-        EventBus.$on('logged-in', status => {
-            this.auth = status
-        })
+            EventBus.$on('logged-in', data => {
+                this.auth = data
+            })
     },
 }
 </script>
@@ -62,6 +62,12 @@ export default {
     .logo{
         width: 20%;
     }
-  
+    .collapse{
+        display: flex;
+        justify-content: flex-end!important;
+    }
+    a{
+        color: #fff!important;
+    }
 
 </style>

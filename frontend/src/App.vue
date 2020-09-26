@@ -2,11 +2,13 @@
   <div id="app">
     <header-top></header-top>
     <router-view></router-view>
+    <footer-page></footer-page>
   </div>
 </template>
 
 <script>
 import header from './components/header.vue'
+import footer from './components/footer-page.vue'
 
 export default {
   name: 'App',
@@ -21,6 +23,7 @@ export default {
   },
   components: {
     'header-top': header,
+    'footer-page': footer,
   }
 }
 </script>
